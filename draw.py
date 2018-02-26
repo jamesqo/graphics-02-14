@@ -9,6 +9,11 @@ def draw_lines( matrix, screen, color ):
 def add_edge( matrix, x0, y0, x1, y1 ):
     newmat = new_matrix(rows=nrows(matrix), cols=ncols(matrix) + 1)
     c = ncols(matrix)
+
+    for i in range(nrows(matrix)):
+        for j in range(ncols(matrix)):
+            newmat[i][j] = matrix[i][j]
+
     newmat[0][c] = x0
     newmat[1][c] = y0
     newmat[2][c] = x1
@@ -16,7 +21,7 @@ def add_edge( matrix, x0, y0, x1, y1 ):
     return newmat
 
 def add_point( matrix, x, y ):
-    add_edge(matrix, x, y, x, y)
+    return add_edge(matrix, x, y, x, y)
 
 def draw_line( x0, y0, x1, y1, screen, color ):
 
