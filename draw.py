@@ -3,15 +3,20 @@ from matrix import *
 
 
 def draw_lines( matrix, screen, color ):
-    pass
+    for col in transpose(matrix):
+        draw_line(*col, screen, color)
 
-def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
-    pass
+def add_edge( matrix, x0, y0, x1, y1 ):
+    newmat = new_matrix(rows=nrows(matrix), cols=ncols(matrix) + 1)
+    c = ncols(matrix)
+    newmat[0][c] = x0
+    newmat[1][c] = y0
+    newmat[2][c] = x1
+    newmat[3][c] = y1
+    return newmat
 
-def add_point( matrix, x, y, z=0 ):
-    pass
-
-
+def add_point( matrix, x, y ):
+    add_edge(matrix, x, y, x, y)
 
 def draw_line( x0, y0, x1, y1, screen, color ):
 

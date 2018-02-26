@@ -29,7 +29,6 @@ def matrix_mult( m1, m2 ):
         for c in range(len(m2row)):
             # Should be row r of m1 dotted with column c of m2
             m2col = [other_m2row[c] for other_m2row in m2]
-            print("DEBUG: dotting {0} with {1}".format(m1row, m2col))
             m3[r][c] = dot(m1row, m2col)
 
     return m3
@@ -51,3 +50,17 @@ def new_matrix(rows = 4, cols = 4):
         for c in range( cols ):
             m[r].append( 0 )
     return m
+
+def ncols(mat):
+    return len(mat[0])
+
+def nrows(mat):
+    return len(mat)
+
+def transpose(mat):
+    newmat = new_matrix(rows=ncols(mat), cols=nrows(mat))
+
+    for i in range(nrows(mat)):
+        for j in range(ncols(mat)):
+            newmat[j][i] = mat[i][j]
+    return newmat
