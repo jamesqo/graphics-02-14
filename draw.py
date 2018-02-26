@@ -4,7 +4,8 @@ from matrix import *
 
 def draw_lines( matrix, screen, color ):
     for col in transpose(matrix):
-        draw_line(*col, screen, color)
+        x0, y0, x1, y1 = col
+        draw_line(x0, y0, x1, y1, screen, color)
 
 def add_edge( matrix, x0, y0, x1, y1 ):
     newmat = new_matrix(rows=nrows(matrix), cols=ncols(matrix) + 1)

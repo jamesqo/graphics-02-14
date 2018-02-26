@@ -34,10 +34,10 @@ for i in range(10):
 # Edge matrix is 4xN
 edge_mat  = new_matrix(rows=4, cols=2)
 # Add edges [(3, 5), (4, 1)], [(7, 6), (9, 10)]
-edge_mat[0] = [300,  700]
-edge_mat[1] = [500,  600]
-edge_mat[2] = [400,  900]
-edge_mat[3] = [100, 1000]
+edge_mat[0] = [30,  70]
+edge_mat[1] = [50,  60]
+edge_mat[2] = [40,  90]
+edge_mat[3] = [10, 100]
 print("edge_mat:")
 print_matrix(edge_mat)
 
@@ -47,12 +47,11 @@ print("edge_mat after add_edge((0, 0), (100, 100)):")
 print_matrix(edge_mat)
 
 print("Testing add_point()")
-edge_mat = add_point(edge_mat, 100, 300)
+edge_mat = add_point(edge_mat, 10, 30)
 print("edge_mat after add_point((100, 300)):")
 print_matrix(edge_mat)
 
 print("Drawing lines")
 draw_lines( edge_mat, screen, color )
 display(screen)
-save_ppm(screen, "out.ppm")
 save_extension(screen, "out.png")
