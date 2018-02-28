@@ -3,11 +3,18 @@ from matrix import *
 
 
 def draw_lines( matrix, screen, color ):
-    for col in transpose(matrix):
-        x0, y0, x1, y1 = col
+    m_t = transpose(matrix)
+    for i in range(ncols(matrix) / 2):
+        x0, y0, z0, one = m_t[2 * i]
+        x1, y1, z1, one = m_t[2 * i + 1]
         draw_line(x0, y0, x1, y1, screen, color)
 
-def add_edge( matrix, x0, y0, x1, y1 ):
+def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
+    matrix = add_point(matrix, x0, y0, z0)
+    matrix = add_point(matrix, x1, y1, z1)
+    return matrix
+
+def add_point( matrix, x, y, z ):
     newmat = new_matrix(rows=nrows(matrix), cols=ncols(matrix) + 1)
     c = ncols(matrix)
 
@@ -15,14 +22,11 @@ def add_edge( matrix, x0, y0, x1, y1 ):
         for j in range(ncols(matrix)):
             newmat[i][j] = matrix[i][j]
 
-    newmat[0][c] = x0
-    newmat[1][c] = y0
-    newmat[2][c] = x1
-    newmat[3][c] = y1
+    newmat[0][c] = x
+    newmat[1][c] = y
+    newmat[2][c] = z
+    newmat[3][c] = 1
     return newmat
-
-def add_point( matrix, x, y ):
-    return add_edge(matrix, x, y, x, y)
 
 def draw_line( x0, y0, x1, y1, screen, color ):
 

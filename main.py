@@ -32,23 +32,21 @@ for i in range(10):
 
 # Transformation matrix is 4x4
 # Edge matrix is 4xN
-edge_mat  = new_matrix(rows=4, cols=2)
-# Add edges [(3, 5), (4, 1)], [(7, 6), (9, 10)]
-edge_mat[0] = [0,  0]
-edge_mat[1] = [0,  0]
-edge_mat[2] = [300,  100]
-edge_mat[3] = [90, 40]
+edge_mat  = new_matrix(rows=4, cols=0)
+edge_mat = add_edge(edge_mat, 0, 0, 0, 300, 90, 0)
+edge_mat = add_edge(edge_mat, 0, 0, 0, 100, 40, 0)
 print("edge_mat:")
 print_matrix(edge_mat)
 
 print("Testing add_edge()")
-edge_mat = add_edge(edge_mat, 0, 0, 100, 100)
-print("edge_mat after add_edge((0, 0), (100, 100)):")
+edge_mat = add_edge(edge_mat, 0, 0, 0, 100, 100, 0)
+print("edge_mat after add_edge((0, 0, 0), (100, 100, 0)):")
 print_matrix(edge_mat)
 
 print("Testing add_point()")
-edge_mat = add_point(edge_mat, 30, 10)
-print("edge_mat after add_point((100, 300)):")
+edge_mat = add_point(edge_mat, 30, 10, 0)
+edge_mat = add_point(edge_mat, 80, 20, 0)
+print("edge_mat after add_point((30, 10, 0)) and add_point((80, 20, 0)):")
 print_matrix(edge_mat)
 
 print("Drawing lines")
